@@ -29,5 +29,7 @@ namespace Garage2._0.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Garage2._0.Models.Vehicle> Vehicles { get; set; }
     }
 }
