@@ -48,9 +48,8 @@ namespace Garage2._0.Controllers
 
         // Searhtest 3.0
 
-        public ActionResult Index(string id, string sortOrder)
+        public ViewResult Index(string searchString, string sortOrder)
         {
-            string searchString = id; 
             var vehicle = from v in db.Vehicles
                          select v;
 
