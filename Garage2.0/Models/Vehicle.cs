@@ -21,11 +21,11 @@ namespace Garage2._0.Models
 
     public enum Type 
     {
-        Bil,
-        Lastbil,
+        Bil,       
         Båt,
         Buss,
         Flygplan,
+        Lastbil,
         Motorcykel
     }
 
