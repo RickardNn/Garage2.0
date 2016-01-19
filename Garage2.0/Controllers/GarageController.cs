@@ -57,7 +57,7 @@ namespace Garage2._0.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                vehicle = vehicle.Where(v => v.RegistrationNumber.Contains(searchString));
+                vehicle = vehicle.Where(v => v.RegistrationNumber.Contains(searchString));                
             }              
            
             switch (sortOrder)
