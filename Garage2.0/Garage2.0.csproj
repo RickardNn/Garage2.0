@@ -190,6 +190,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\garage.jpg" />
     <Content Include="images\garagecarousel.jpg" />
+    <Content Include="images\P-vakt.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
