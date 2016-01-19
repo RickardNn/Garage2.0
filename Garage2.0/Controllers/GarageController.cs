@@ -15,9 +15,51 @@ namespace Garage2._0.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Garage
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             return View(db.Vehicles.ToList());
+        }*/
+
+        // Searchtest 1.0
+
+        /* public ViewResult Index(string searchString)
+        {
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var vehicles = from v in db.Vehicles
+                               select v;
+                vehicles = vehicles.Where(v => v.RegistrationNumber.Contains(searchString)
+                                       || v.RegistrationNumber.Contains(searchString));
+            }
+            return View(db.Vehicles.ToList());
+        }*/
+
+        // Searchtest 2.0
+
+       /* public ViewResult Index(string q)
+        {
+            var vehicles = from v in db.Vehicles select v;
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                vehicles = vehicles.Where(v => v.RegistrationNumber.Contains(q));
+            }
+            return View(vehicles);
+        }*/
+
+        // Searhtest 3.0
+
+        public ActionResult Index(string id)
+        {
+            string searchString = id; 
+            var vehicles = from v in db.Vehicles
+                         select v;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vehicles = vehicles.Where(s => s.RegistrationNumber.Contains(searchString));
+            }
+
+            return View(vehicles);
         }
 
         // GET: Garage/Details/5

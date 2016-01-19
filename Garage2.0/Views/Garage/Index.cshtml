@@ -8,6 +8,14 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+<p>
+    Sök efter registreringsnummer: @Html.TextBox("SearchString")
+    <input type="submit" value="Sök" />
+</p>
+    }     
 </p>
 <table class="table">
     <tr>
