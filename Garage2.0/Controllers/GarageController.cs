@@ -92,7 +92,16 @@ namespace Garage2._0.Controllers
             }
             return View(vehicle);
         }
-   
+        // POST: Garage/Kvitto/5
+        [HttpPost, ActionName("Kvitto")]
+        [ValidateAntiForgeryToken]
+        public ActionResult KvittoConfirmed(int id)
+        {
+            Vehicle vehicle = db.Vehicles.Find(id);
+            db.Vehicles.Remove(vehicle);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }   
 
         // GET: Garage/Details/5
         public ActionResult Details(int? id)
