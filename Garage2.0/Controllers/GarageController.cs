@@ -14,11 +14,36 @@ namespace Garage2._0.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Garage
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Vehicles.ToList());
-        }
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Type_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "ParkTime" ? "ParkTime_desc" : "ParkTime";
+            var vehicle = from s in db.Vehicles
+                           select s;
+            switch (sortOrder)
+            {
+                case "Type_desc":
+                    vehicle = vehicle.OrderByDescending(s => s.Type);
+                    break;               
+                case "ParkTime":
+                    vehicle = vehicle.OrderBy(s => s.ParkTime);
+                    break;
+                case "ParkTime_desc":
+                     vehicle= vehicle.OrderByDescending(s => s.ParkTime);
+                    break;                
+                default:
+                    vehicle = vehicle.OrderBy(s => s.Type);
+                    break;
+            }
+            return View(vehicle.ToList());
+        }        
+        
+        
+        //// GET: Garage       
+        //public ActionResult Index()
+        //{
+        //    return View(db.Vehicles.ToList());
+        //}
 
         // GET: Garage/Details/5
         public ActionResult Details(int? id)
