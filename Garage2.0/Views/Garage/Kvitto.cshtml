@@ -1,7 +1,7 @@
 ﻿@model Garage2._0.Models.Vehicle
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Kvitto";
 }
 
 @functions{
@@ -11,8 +11,6 @@
         return Convert.ToInt32(diffTime.TotalMinutes);
     }
 }
-
-<h2>Delete</h2>
 
 <h3>Är du säker på att du vill hämta ut ditt fordon??</h3>
 <div>
@@ -77,7 +75,7 @@
 
 
     </dl>
-    DateTime.Now - model:parkTime
+    <h2>@Html.DisplayFor(model => model.RegistrationNumber)</h2>
     <h2>Check out time: @DateTime.Now.ToString() </h2>
     <h2>Check in time: @Html.DisplayFor(model => model.ParkTime) </h2>
     <h2>@TimeDiff(DateTime.Now, Model.ParkTime)</h2>

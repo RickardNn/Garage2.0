@@ -20,6 +20,21 @@ namespace Garage2._0.Controllers
             return View(db.Vehicles.ToList());
         }
 
+        public ActionResult Kvitto(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vehicle vehicle = db.Vehicles.Find(id);
+            if (vehicle == null)
+            {
+                return HttpNotFound();
+            }
+            return View(vehicle);
+        }
+   
+
         // GET: Garage/Details/5
         public ActionResult Details(int? id)
         {

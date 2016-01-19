@@ -69,7 +69,7 @@
             <div class="col-md-10">
                 @*    @Html.TextBoxFor(model => model.ParkTime, new { @Value = "2016-01-18 9:00" })*@
 
-                @Html.TextBoxFor(model => model.ParkTime, new { @Value = @DateTime.Now.ToString() })*
+                @Html.TextBoxFor(model => model.ParkTime, new { @Value = @DateTime.Now.ToString() })
                 @Html.ValidationMessageFor(model => model.ParkTime, "", new { @class = "text-danger" })
             </div>
         </div>
