@@ -5,48 +5,41 @@
 }
 
 
-@using (Html.BeginForm()) { 
-        @*@Html.ActionLink("Parkera fordon", "Create")*@
-            @Html.AntiForgeryToken()
-            <div class="form-actions">
 
-                <input type="submit" value="Parkera fordon" class="btn btn-default" />
-                @Html.ActionLink("Parkera fordon", "Create")
+<p>
+    <input type="button" title="Create" value="Parkera fordon" onclick="location.href='@Url.Action("Create","Garage")'"/>
 
-            </div>
-}
+</p>
+  
 
-    
+        @using (Html.BeginForm())
+        {
+            <p>
+                Sök efter registreringsnummer: @Html.TextBox("SearchString")
+                <input type="submit" value="Sök" />
+            </p>
+        }
 
-
-    @using (Html.BeginForm())
-    {
-        <p>
-            Sök efter registreringsnummer: @Html.TextBox("SearchString")
-            <input type="submit" value="Sök" />
-        </p>
-    }     
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegistrationNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Colour)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Brand)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WheelCount)
-        </th>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colour)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WheelCount)
+            </th>*@
         <th>
             @Html.ActionLink("ParkTime", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
