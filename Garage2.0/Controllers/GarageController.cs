@@ -48,35 +48,33 @@ namespace Garage2._0.Controllers
 
         // Searhtest 3.0
 
-        public ActionResult Index(string id)
+        public ActionResult Index(string id, string sortOrder)
         {
             string searchString = id; 
-            var vehicles = from v in db.Vehicles
+            var vehicle = from v in db.Vehicles
                          select v;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                vehicles = vehicles.Where(s => s.RegistrationNumber.Contains(searchString));
-            }
-
-            return View(vehicles);
+                vehicle = vehicle.Where(v => v.RegistrationNumber.Contains(searchString));
+            }           
+            
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Type_desc" : "";
             ViewBag.DateSortParm = sortOrder == "ParkTime" ? "ParkTime_desc" : "ParkTime";
-            var vehicle = from s in db.Vehicles
-                           select s;
+           
             switch (sortOrder)
             {
                 case "Type_desc":
-                    vehicle = vehicle.OrderByDescending(s => s.Type);
+                    vehicle = vehicle.OrderByDescending(v => v.Type);
                     break;               
                 case "ParkTime":
-                    vehicle = vehicle.OrderBy(s => s.ParkTime);
+                    vehicle = vehicle.OrderBy(v => v.ParkTime);
                     break;
                 case "ParkTime_desc":
-                     vehicle= vehicle.OrderByDescending(s => s.ParkTime);
+                     vehicle= vehicle.OrderByDescending(v => v.ParkTime);
                     break;                
                 default:
-                    vehicle = vehicle.OrderBy(s => s.Type);
+                    vehicle = vehicle.OrderBy(v => v.Type);
                     break;
             }
             return View(vehicle.ToList());
