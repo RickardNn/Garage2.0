@@ -12,10 +12,10 @@
 </p>
   
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Index", "Garage", FormMethod.Get))
         {
             <p>
-                Sök efter registreringsnummer: @Html.TextBox("SearchString")
+                Sök efter registreringsnummer: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
                 <input type="submit" value="Sök" />
             </p>
         }
@@ -23,7 +23,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("Type", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.RegistrationNumber)
@@ -41,7 +41,7 @@
                 @Html.DisplayNameFor(model => model.WheelCount)
             </th>*@
         <th>
-            @Html.ActionLink("ParkTime", "Index", new { sortOrder = ViewBag.DateSortParm })
+            @Html.ActionLink("ParkTime", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th></th>
     </tr>
