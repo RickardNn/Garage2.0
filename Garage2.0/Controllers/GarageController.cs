@@ -189,12 +189,21 @@ namespace Garage2._0.Controllers
         // POST: Garage/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, string show = "")
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            if (show == "receipt") { 
+                // show receipt view
+                return View("Kvitto", vehicle);
+
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

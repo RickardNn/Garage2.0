@@ -12,24 +12,25 @@
     }
 }
 
-<h3>Är du säker på att du vill hämta ut din/ditt @Html.DisplayFor(model => model.Type) ?</h3>
+@*<h3>Är du säker på att du vill hämta ut din/ditt @Html.DisplayFor(model => model.Type) ?</h3>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Hämta ut fordon" class="btn btn-default" /> |
+            <input type="submit" value="Hämta ut fordon" class="btn btn-default" /> |            <input type="submit" value="Hämta ut fordon" class="btn btn-default" /> |
+
             @Html.ActionLink("Fortsätt parkera", "Index")
         </div>
-    }
+    }*@
 <h1>KVITTO</h1>
 <div>
     <hr />
 
     <h4>Registreringsnummer: @Html.DisplayFor(model => model.RegistrationNumber)</h4>
-    <h2>Uthämtad: @DateTime.Now.ToString() </h2>
-    <h2>Parkerad: @Html.DisplayFor(model => model.ParkTime) </h2>
-    <h2>Parkeringstid @TimeDiff(DateTime.Now, Model.ParkTime) minuter</h2>
+    <p>Parkerad: @Html.DisplayFor(model => model.ParkTime) </p>
+    <p>Uthämtad: @DateTime.Now.ToString() </p>
+    <p>Parkeringstid @TimeDiff(DateTime.Now, Model.ParkTime) minuter</p>
     <p>Kostnad: @TimeDiff(DateTime.Now, Model.ParkTime) kronor</p>
 
 </div>
