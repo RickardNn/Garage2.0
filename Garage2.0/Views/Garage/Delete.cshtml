@@ -18,24 +18,23 @@
 @Html.ActionLink("Fortsätt parkera", "Index")
 <div>
     <hr />
-    
-    DateTime.Now - model:parkTime
-    <h2>Check out time: @DateTime.Now.ToString() </h2>
-    <h2>Check in time: @Html.DisplayFor(model => model.ParkTime) </h2>
-    <h2>@TimeDiff(DateTime.Now, Model.ParkTime)</h2>
+
+    <h3>Tiden nu: @DateTime.Now.ToString() </h3>
+    <h3>Parkerad: @Html.DisplayFor(model => model.ParkTime) </h3>
+    <h3>Parkeringstid: @TimeDiff(DateTime.Now, Model.ParkTime)</h3>
 
     @*@using (Html.BeginForm())
-    {
-    @Html.AntiForgeryToken()
+        {
+        @Html.AntiForgeryToken()
 
-    <div class="form-actions no-color">
-        <input type="submit" value="Hämta ut fordon" class="btn btn-default" /> | <input type="submit" value="Hämta ut fordon, med kvitto" class="btn btn-default" />
-        @Html.ActionLink("Back to List", "Kvitto")
-        <input type="button" title="Delete" value="Hämta ut fordon" onclick="location.href='@Url.Action("Delete","Garage")'" />
-        <input type="button" title="Index" value="Hämta ut fordon + kvitto" onclick="location.href='@Url.Action("Kvitto","Garage")'" />
+        <div class="form-actions no-color">
+            <input type="submit" value="Hämta ut fordon" class="btn btn-default" /> | <input type="submit" value="Hämta ut fordon, med kvitto" class="btn btn-default" />
+            @Html.ActionLink("Back to List", "Kvitto")
+            <input type="button" title="Delete" value="Hämta ut fordon" onclick="location.href='@Url.Action("Delete","Garage")'" />
+            <input type="button" title="Index" value="Hämta ut fordon + kvitto" onclick="location.href='@Url.Action("Kvitto","Garage")'" />
 
-    </div>
-    }*@
+        </div>
+        }*@
 
 
     <div class="form-actions no-color">
@@ -43,14 +42,14 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            <input type="submit" value="Hämta ut fordon" class="btn btn-default" />
+    <input type="submit" value="Hämta ut fordon" class="btn btn-default" style="float:left" />
         }
-
+        
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
             <input type="hidden" name="show" value="receipt" />
-            <input type="submit" value="Hämta ut fordon, med kvitto" class="btn btn-default" />
+            <input type="submit" value="Hämta ut fordon, med kvitto" class="btn btn-default" style="margin-left:10px" />
         }
 
     </div>
