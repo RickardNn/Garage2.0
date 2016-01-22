@@ -1,7 +1,63 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@model IEnumerable<Garage2._0.Models.StatisticsViewModel>
+
+@{
+    ViewBag.Title = "Statistik";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<table>
+    <tr>
+        <th>
+            Fordonstyp:
+        </th>
+        <th>
+            
+        </th>
+        <th>
+            Antal:
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                @item.TypeCount
+            </td>
+        </tr>
+    }
+</table>
+
+@*<table>
+    <tr>
+        <th>
+            Fordonsfärg:
+        </th>
+        <th>
+
+        </th>
+        <th>
+            Antal:
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Colour)
+            </td>
+            <td></td>
+            <td>
+                @item.ColourCount
+            </td>
+        </tr>
+    }
+</table>*@
