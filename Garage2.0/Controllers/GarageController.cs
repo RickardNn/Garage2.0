@@ -84,7 +84,7 @@ namespace Garage2._0.Controllers
 
             var platser = from v in db.Vehicles
                           select v;
-            return (10 - platser.Count());
+            return (garageSize - platser.Count());
 
         }
         
@@ -185,8 +185,9 @@ namespace Garage2._0.Controllers
         public ActionResult Create([Bind(Include = "Id,Type,RegistrationNumber,Colour,Brand,Model,WheelCount,ParkTime,ParkingLot")] Vehicle vehicle)
         {
             
-            if (ModelState.IsValid)
+            if ((ModelState.IsValid) && (NextFreeLot() != 0))
             {
+                vehicle.ParkingLot = NextFreeLot(); 
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
