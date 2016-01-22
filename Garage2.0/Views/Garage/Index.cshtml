@@ -56,11 +56,14 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.WheelCount)
             </th>*@
-        <th>
-            @Html.ActionLink("ParkTime", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th></th>
-    </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingLot)
+            </th>
+            <th>
+                @Html.ActionLink("ParkTime", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>
 
 @foreach (var item in Model) {
     <tr>
@@ -82,6 +85,9 @@ else
         <td>
             @Html.DisplayFor(modelItem => item.WheelCount)
         </td>*@
+        <th>
+            @Html.DisplayFor(model => item.ParkingLot)
+        </th>
         <td>
             @Html.DisplayFor(modelItem => item.ParkTime)
         </td>

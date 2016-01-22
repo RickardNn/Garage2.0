@@ -12,7 +12,7 @@ namespace Garage2._0.Controllers
 {
     public class GarageController : Controller
     {
-        public ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Garage
         /*public ActionResult Index()
