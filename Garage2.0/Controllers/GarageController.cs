@@ -48,6 +48,15 @@ namespace Garage2._0.Controllers
 
         // Searhtest 3.0
 
+       
+        public int TotalPlatser()
+        {
+            var platser = from v in db.Vehicles
+                          select v;
+            return (10-platser.Count());
+            
+        }
+
         public ViewResult Index(string sortOrder, string currentFilter, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Type_desc" : "";
@@ -129,6 +138,10 @@ namespace Garage2._0.Controllers
             return View(vehicle);
         }
 
+
+
+
+
         // GET: Garage/Create
         public ActionResult Create()
         {
@@ -140,15 +153,15 @@ namespace Garage2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Type,RegistrationNumber,Colour,Brand,Model,WheelCount,ParkTime")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,Type,RegistrationNumber,Colour,Brand,Model,WheelCount,ParkingLot,ParkTime")] Vehicle vehicle)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Vehicles.Add(vehicle);
-                db.SaveChanges();
+                db.SaveChanges();               
                 return RedirectToAction("Index");
             }
-
             return View(vehicle);
         }
 

@@ -5,12 +5,10 @@
 }
 
 
-
 <p style="padding-top:50px">
     <input type="button" title="Create" value="Parkera fordon" style="background-color:forestgreen; color:#fff" onclick=" location.href='@Url.Action("Create","Garage")' " />
 
-</p>
-  
+</p>  
 
         @using (Html.BeginForm("Index", "Garage", FormMethod.Get))
         {
@@ -19,6 +17,13 @@
                 <input type="submit" value="Sök" />
             </p>
         }
+
+@using (Html.BeginForm("Index", "Garage", FormMethod.Get))
+{
+    <p>
+        Total lediga platser: @Html.Action("TotalPlatser")        
+    </p>
+}
 
     <table class="table">
         <tr>

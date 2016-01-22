@@ -177,6 +177,22 @@
     <Compile Include="Migrations\201601200929462_DataAnnotations.Designer.cs">
       <DependentUpon>201601200929462_DataAnnotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601201438507_ParkingSize.cs" />
+    <Compile Include="Migrations\201601201438507_ParkingSize.Designer.cs">
+      <DependentUpon>201601201438507_ParkingSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201519462_remove parkingsize.cs" />
+    <Compile Include="Migrations\201601201519462_remove parkingsize.Designer.cs">
+      <DependentUpon>201601201519462_remove parkingsize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601211457361_add ledigP.cs" />
+    <Compile Include="Migrations\201601211457361_add ledigP.Designer.cs">
+      <DependentUpon>201601211457361_add ledigP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601211458420_remove ledigP.cs" />
+    <Compile Include="Migrations\201601211458420_remove ledigP.Designer.cs">
+      <DependentUpon>201601211458420_remove ledigP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -192,7 +208,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\garage.jpg" />
     <Content Include="images\garagecarousel.jpg" />
     <Content Include="images\P-vakt.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -271,6 +286,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601200929462_DataAnnotations.resx">
       <DependentUpon>201601200929462_DataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201438507_ParkingSize.resx">
+      <DependentUpon>201601201438507_ParkingSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201519462_remove parkingsize.resx">
+      <DependentUpon>201601201519462_remove parkingsize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601211457361_add ledigP.resx">
+      <DependentUpon>201601211457361_add ledigP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601211458420_remove ledigP.resx">
+      <DependentUpon>201601211458420_remove ledigP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,8 +16,10 @@ namespace Garage2._0.Models
         public string Colour { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public int WheelCount { get; set; }
+        [Range(1, 16)]
+        public int WheelCount { get; set; }        
         public DateTime ParkTime { get; set; }
+        public int ParkingLot { get; set; }      
     }
 
     public enum Type 
