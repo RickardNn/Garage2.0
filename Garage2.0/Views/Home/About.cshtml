@@ -48,15 +48,15 @@
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item2 in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Colour)
+                @Html.DisplayFor(modelItem => item2.Colour)
             </td>
             <td></td>
             <td>
-                @item.ColourCount
+                @item2.ColourCount
             </td>
         </tr>
     }

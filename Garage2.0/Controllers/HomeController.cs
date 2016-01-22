@@ -30,14 +30,15 @@ namespace Garage2._0.Controllers
 
             //dataList.Add(data.ToList());
 
-            //IQueryable<StatisticsViewModel> data2 = from vehicle in db.Vehicles
-            //                                        group vehicle by vehicle.Colour into vehicleGroup2
+            //IQueryable<StatisticsViewModel> data2 = from vehicle2 in db.Vehicles
+            //                                        group vehicle2 by vehicle2.Colour into vehicleGroup2
             //                                        select new StatisticsViewModel()
             //                                        {
             //                                            Colour = vehicleGroup2.Key,
             //                                            ColourCount = vehicleGroup2.Count(),
             //                                        };
             //dataList.Add(data2.ToList());
+            //return View(data.ToList().Union(data2.ToList()));
 
             return View(data);
         }
