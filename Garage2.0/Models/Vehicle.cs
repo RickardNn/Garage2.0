@@ -14,7 +14,7 @@ namespace Garage2._0.Models
         [Required]
         public string RegistrationNumber { get; set; }
         public string Colour { get; set; }
-        public string Brand { get; set; }
+        public string Brand { get; set; } 
         public string Model { get; set; }
         [Range(1, 16)] 
         public int WheelCount { get; set; }

@@ -12,6 +12,37 @@ namespace Garage2._0.Controllers
 {
     public class GarageController : Controller
     {
+        static int garageSize = 16;
+        public int TotalFordon()
+        {
+            return db.Vehicles.Count(i => i.Id != null);
+        }
+
+        public int NextFreeLot()
+        {
+            var lotsort = db.Vehicles.OrderBy(i => i.ParkingLot);
+            var a = 0;
+            foreach (var v in lotsort)
+            {
+                var b = v.ParkingLot;
+                if (b - a >= 2)
+                {
+                    break;
+                }
+                else
+                {
+                    a = b;
+                }
+
+            }
+            if (a >= garageSize) return 0;
+            else
+                return a + 1;
+
+
+        }
+
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Garage
@@ -36,15 +67,15 @@ namespace Garage2._0.Controllers
 
         // Searchtest 2.0
 
-       /* public ViewResult Index(string q)
-        {
-            var vehicles = from v in db.Vehicles select v;
-            if (!string.IsNullOrWhiteSpace(q))
-            {
-                vehicles = vehicles.Where(v => v.RegistrationNumber.Contains(q));
-            }
-            return View(vehicles);
-        }*/
+        /* public ViewResult Index(string q)
+         {
+             var vehicles = from v in db.Vehicles select v;
+             if (!string.IsNullOrWhiteSpace(q))
+             {
+                 vehicles = vehicles.Where(v => v.RegistrationNumber.Contains(q));
+             }
+             return View(vehicles);
+         }*/
 
         // Searhtest 3.0
 
@@ -73,26 +104,26 @@ namespace Garage2._0.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            
+
             var vehicle = from v in db.Vehicles
-                         select v;
+                          select v;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                vehicle = vehicle.Where(v => v.RegistrationNumber.Contains(searchString));                
-            }              
-           
+                vehicle = vehicle.Where(v => v.RegistrationNumber.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "Type_desc":
                     vehicle = vehicle.OrderByDescending(v => v.Type);
-                    break;                
+                    break;
                 case "ParkTime":
                     vehicle = vehicle.OrderBy(v => v.ParkTime);
                     break;
                 case "ParkTime_desc":
-                     vehicle= vehicle.OrderByDescending(v => v.ParkTime);
-                    break;                
+                    vehicle = vehicle.OrderByDescending(v => v.ParkTime);
+                    break;
                 default:
                     vehicle = vehicle.OrderBy(v => v.Type);
                     break;
@@ -123,7 +154,7 @@ namespace Garage2._0.Controllers
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }   
+        }
 
         // GET: Garage/Details/5
         public ActionResult Details(int? id)
@@ -140,10 +171,6 @@ namespace Garage2._0.Controllers
             return View(vehicle);
         }
 
-
-
-
-
         // GET: Garage/Create
         public ActionResult Create()
         {
@@ -155,15 +182,22 @@ namespace Garage2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Type,RegistrationNumber,Colour,Brand,Model,WheelCount,ParkingLot,ParkTime")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,Type,RegistrationNumber,Colour,Brand,Model,WheelCount,ParkTime,ParkingLot")] Vehicle vehicle)
         {
             
             if (ModelState.IsValid)
             {
                 db.Vehicles.Add(vehicle);
-                db.SaveChanges();               
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            if (NextFreeLot()!=0)
+            {
+            ViewBag.Full = "Tryck på knappen för att parkera";
+                
+            }
+            else
+            ViewBag.Full = "Tyvärr garaget är fullt";
             return View(vehicle);
         }
 
@@ -187,7 +221,7 @@ namespace Garage2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Type,RegistrationNumber,Colour,Brand,Model,WheelCount,ParkTime")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "Id,Type,RegistrationNumber,Colour,Brand,Model,WheelCount,ParkTime,ParkingLot")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
