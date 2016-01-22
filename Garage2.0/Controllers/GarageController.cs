@@ -17,7 +17,7 @@ namespace Garage2._0.Controllers
         static int garageSize = 16;
         public int TotalFordon()
         {
-            return db.Vehicles.Count(i => i.Id != null);
+            return db.Vehicles.Count(i => i.Id != null); 
         }
 
         public int NextFreeLot()
