@@ -12,7 +12,7 @@ namespace Garage2._0.Controllers
 {
     public class GarageController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        public ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Garage
         /*public ActionResult Index()
@@ -48,14 +48,15 @@ namespace Garage2._0.Controllers
 
         // Searhtest 3.0
 
-       
         public int TotalPlatser()
         {
+
             var platser = from v in db.Vehicles
                           select v;
-            return (10-platser.Count());
-            
+            return (10 - platser.Count());
+
         }
+        
 
         public ViewResult Index(string sortOrder, string currentFilter, string searchString)
         {
@@ -96,6 +97,7 @@ namespace Garage2._0.Controllers
                     vehicle = vehicle.OrderBy(v => v.Type);
                     break;
             }
+            ViewBag.FreeSpaces = TotalPlatser();
             return View(vehicle.ToList());
         }
 

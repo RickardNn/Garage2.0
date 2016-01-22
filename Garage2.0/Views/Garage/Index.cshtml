@@ -2,14 +2,23 @@
 
 @{
     ViewBag.Title = "CLR Garage Index";
+    int FreeSpaces = ViewBag.FreeSpaces;    
 }
 
+@if ((int)FreeSpaces == 0)
+{
+    <p style="padding-top:50px">
+        <input type="button" disabled="disabled" title="Create" value="Parkering plats är full" style="background-color:#ff0000; color:#fff" onclick=" location.href='@Url.Action("Create","Garage")' " />
 
-<p style="padding-top:50px">
-    <input type="button" title="Create" value="Parkera fordon" style="background-color:forestgreen; color:#fff" onclick=" location.href='@Url.Action("Create","Garage")' " />
+    </p>
+}
+else
+{
+    <p style="padding-top:50px">
+        <input type="button" title="Create" value="Parkera fordon" style="background-color:forestgreen; color:#fff" onclick=" location.href='@Url.Action("Create","Garage")'" />
 
-</p>  
-
+    </p>
+}
         @using (Html.BeginForm("Index", "Garage", FormMethod.Get))
         {
             <p>
@@ -21,9 +30,11 @@
 @using (Html.BeginForm("Index", "Garage", FormMethod.Get))
 {
     <p>
-        Total lediga platser: @Html.Action("TotalPlatser")        
+        Total lediga platser: @FreeSpaces
     </p>
 }
+@if ((int)FreeSpaces == 0)
+{}
 
     <table class="table">
         <tr>
